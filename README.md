@@ -1,49 +1,53 @@
-****File Organizer Utility Scripts****
+# File Organization toolkit
 
-This folder contains two batch scripts designed to help you organize and reorganize your files quickly. These scripts act as a pair: one sorts your files into folders, and the other undoes the process by bringing everything back to the main folder.
+This repository contains two simple but powerful Windows Batch scripts designed to help you organize a messy folder and easily undo the process if needed.
 
-1. Sort by Extension Script
+## Included Scripts
 
-What it does:
-This script automatically cleans up a messy folder by grouping files based on their type (extension).
+### 1. `filesort.bat`
 
-How it works:
+This script acts as an automated folder organizer.
 
-It scans all the files in the same folder where the script is located.
+* **What it does:** It loops through all files in the current directory and moves them into newly created folders based on their file extension. For example, all `.jpg` files will be moved into a folder named `jpg`.
 
-It identifies the file extension of each file (e.g., .jpg, .pdf, .txt).
 
-It creates a new folder named after that extension (e.g., a folder named jpg).
+* **Smart Filtering:** It ensures that the batch script itself is not moved during the process.
 
-It moves the files into their matching folders.
 
-Note: The script is smart enough to ignore itself, so it won't move the actual batch file.
+* **No-Extension Files:** It skips files that do not have a file extension.
 
-2. Flatten Folders Script (The Reverser)
 
-What it does:
-This script does the exact opposite of the sorting script. It pulls all files out of their subfolders and places them back into the main directory, then cleans up the empty folders.
+* **Completion:** Once finished, it displays the message "Files have been successfully sorted by extension!" and pauses so you can see the result.
 
-How it works:
 
-It looks at every folder in the current directory.
 
-It moves all files out of those folders and places them right next to the script.
+### 2. `filereverse.bat`
 
-Once a folder is completely empty of files, the script deletes the folder to keep things tidy.
+This script acts as an "undo" button for `filesort.bat` or a general tool to flatten a folder structure.
 
-Safety Note: This script does not delete your files. It only deletes folders if they are empty. If a folder contains another subfolder, it will be left alone.
+* **What it does:** It loops through all immediate subfolders in the current directory.
 
-How to Use the Scripts
 
-Place the script: Copy or move the desired .bat script into the specific folder you want to organize (or flatten).
+* **File Flattening:** It moves all files from inside those subfolders back to the current root directory (the exact location where the script is running).
 
-Run the script: Double-click the batch file.
 
-Wait for completion: A command prompt window will briefly appear, process the files, and then display a success message. Press any key to close the window.
+* **Automatic Cleanup:** After moving the files out, it attempts to remove the subfolder. It will safely only delete a folder if it is completely empty.
 
-⚠️ Important Warnings
 
-Location Matters: These scripts affect the folder they are currently inside. Do not run them on your Desktop or in essential system folders (like C:\Windows), as it will move everything around! Put the files you want to sort into an isolated folder first.
+* **Completion:** Once finished, it displays the message "Files have been successfully moved back and empty folders removed!" and pauses.
 
-The Flatten Script is Global: The flatten script will pull files out of every folder in the same directory as the script. Be sure you actually want to extract the contents of all subfolders before running it.
+
+
+---
+
+## How to Use
+
+1. **Place the Scripts:** Copy either `filesort.bat` or `filereverse.bat` directly into the folder you want to organize or flatten.
+2. **Run the Script:** Double-click the `.bat` file to execute it. A command prompt window will briefly appear to show you the progress.
+3. **Press Any Key:** The script will pause at the end so you can read the success message. Press any key on your keyboard to close the window.
+
+## ⚠️ Important Safety Warnings
+
+* **Target Specific Folders:** Only place and run these scripts in specific folders you want to organize (like a messy "Downloads" folder).
+* **Do NOT run on your Desktop:** Running `filesort.bat` directly on your Desktop will scoop up all your shortcuts and files into extension-based folders, which can be highly disruptive.
+* **Do NOT run in System Folders:** Never run these scripts in `C:\Windows`, `Program Files`, or other critical system directories, as flattening or moving those files will break your software.
