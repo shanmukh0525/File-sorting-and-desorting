@@ -1,4 +1,4 @@
-File Organizer Utility Scripts
+#File Organizer Utility Scripts
 
 This folder contains two batch scripts designed to help you organize and reorganize your files quickly. These scripts act as a pair: one sorts your files into folders, and the other undoes the process by bringing everything back to the main folder.
 
